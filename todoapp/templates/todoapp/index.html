@@ -1,0 +1,27 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title> Index </title>
+        </head>
+        <body>
+            <a href="{% url 'aboutpage' %}"> About </a>
+
+            <h1> HELLO WORLD ! </h1> 
+           <form action="" method="post">
+               {% csrf_token %}
+                {{ task_form }}
+            <button type="submit" name="addTask">Add</button>
+           </form>
+           
+           <a href="{% url 'delete_all' %}"><button>DELETE ALL</button></a>
+           <a href="{% url 'delete_completed' %}"><button>DELETE COMPLETED</button></a>
+
+           {% for task in all_tasks %}
+            {% if  task.completed %}
+               <h2 style="text-decoration: line-through;"> {{ task }} </h2> <a href="{% url 'delete' task.id %}" type="button"> DELETE</a>
+                {% else %}
+                  <a href="{% url 'complete' task.pk %}"><h2> {{ task }}</h2></a>  <a href="{% url 'delete' task.id %}" type="button"> DELETE</a>
+            {% endif %}
+           {% endfor %}
+        </body>
+    </html>
