@@ -43,3 +43,9 @@ def delete_all(request):
     tasks = Task.objects.all()
     tasks.delete()
     return redirect('index')
+
+def login(request):
+    return render(request, 'todoapp/login.html')
+
+def register(request):
+    return render(request, 'todoapp/register.html')

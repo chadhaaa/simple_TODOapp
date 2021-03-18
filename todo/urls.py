@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from todoapp.views import index, about, delete_task, complete_task, delete_completed, delete_all
+from todoapp.views import index, about, delete_task, complete_task, delete_completed, delete_all, login, register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,8 @@ urlpatterns = [
     path('delete/<int:task_id>', delete_task , name = "delete"),
     path('complete/<int:task_pk>', complete_task, name ="complete"),
     path('delete_completed', delete_completed, name ="delete_completed"),
-    path('delete_all', delete_all, name ="delete_all")
+    path('delete_all', delete_all, name ="delete_all"),
+    path('login/', login, name="login"),
+    path('register/', register, name="register")
     
 ]
